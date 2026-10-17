@@ -20,7 +20,18 @@ jobs:
           sudo apt-get install -y git zip unzip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libffi-dev libssl-dev cmake ccache
           pip install --upgrade buildozer "cython<3" virtualenv
       - name: Build APK
-        run: (yes || true) | buildozer android debug
+        run: |
+          (yes || true) | buildozer android debug > build.log 2>&1 || {
+            echo "=== BUILD FAILED. 60 LINES BEFORE THE ERROR ==="
+            grep -n -B60 "Command failed" build.log | head -n 120
+            exit 1
+          }
+      - name: Save build log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
       - uses: actions/upload-artifact@v4
         with:
           name: AbixNinja-APK
