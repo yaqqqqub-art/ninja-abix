@@ -1,0 +1,46 @@
+ABIX MODS - GUIDE
+=================
+MOD FOLDER (game e: main menu -> MODS -> OPEN MODS FOLDER):
+    C:\Users\<you>\AppData\Roaming\AbixNinja\AbixMods\
+Each mod = its own folder with:   mod.json   +   main.py   (+ png/jpg/txt/json files)
+Copy mod_examples\hello_mod there to see how it works.
+
+mod.json:  {"name":"My Mod","version":"1.0","author":"me","entry":"main.py","description":"..."}
+
+main.py hooks (all optional):
+    def on_load(api): ...
+    def on_update(dt, api): ...      # every frame on the main menu
+    def on_draw(api): ...            # draw on the main menu
+    def on_event(ev, api): ...       # ev.type = keydown/keyup/mousedown/mouseup, ev.key, ev.pos, ev.button
+api: rect  circle  line  text  image  mouse  stat(read only)  log  load_data  save_data  width  height
+
+SECURITY (2 layers)
+ 1) AUTO SECURITY (file + code scan, on this PC):
+      - only .py .json .txt .md .png .jpg files (no .exe/.dll/.bat ...)
+      - imports allowed: math random time colorsys itertools functools collections string
+      - blocked: os/sys/open/eval/exec/getattr/while loops/dunder (__x__)/.format ...
+ 2) HTTP SECURITY SERVER:
+      The game connects over HTTP to the Abix security server and sends each mod's SHA-256 hash.
+      Server replies (signed with HMAC secret) allow / deny for every mod.
+      - ONLINE  = SECURITY ON  -> approved mods run
+      - OFFLINE = SECURITY OFF -> NO mod runs (game re-checks every 45 s; if the server goes away, mods stop)
+      - if a mod file is changed, its hash changes -> blocked until approved again.
+
+HOW TO USE THE SERVER (on your PC or any server)
+ 1. Double-click Start_Security_Server.bat   (keep the window open while you play)
+ 2. For every mod you make/trust:  drag the mod folder onto Approve_Mod.bat
+    (or:  python security_server\abix_security_server.py approve "<mod folder>")
+    Approve again after every edit of the mod (hash changes).
+ 3. Start the game -> MODS button turns green = SECURITY ON.
+ Other commands: block <sha256>, list, hash <folder>.   policy.json: "mode":"allowlist" (strict) or "blocklist".
+
+SERVER ADDRESS / SECRET (game side):  %APPDATA%\AbixNinja\mods_config.json   {"server_url", "secret"}
+    must match security_server\server_config.json "secret".
+    To use a server on the internet: set server_url to your server (use https:// via a reverse proxy),
+    and change the secret in BOTH files (choose a long random one).
+
+HONEST LIMITS
+ - Python cannot be sandboxed 100%. The scan + restricted API make mods much safer, but only approve mods you trust.
+ - The secret is stored inside the game files, so a skilled person can extract it. Keep the server's allowlist strict.
+ - A mod can still waste CPU; the game stops mods that are too slow or crash 3 times.
+ - Mods work on the MAIN MENU screen for now (not inside levels).

@@ -1,0 +1,41 @@
+﻿ABIX NINJA PRO ULTRA v3  -  by ABU BAKKAR
+=============================================
+
+[ A ] GAME CHALANOR NIYOM (build charai, shoja)
+  1. Python 3.10+ install koro (python.org) - "Add python.exe to PATH" tick dite bhulo na.
+  2. RUN_GAME.bat e double click koro. (prothom bar pygame, numpy, opencv nijei install hobe - internet lagbe)
+  3. Game khulbe.
+
+[ B ] SETUP EXE BANANOR NIYOM
+  1. Python + Inno Setup 6 (jrsoftware.org/isdl.php) install koro.
+  2. BUILD_SETUP_EXE.bat e double click koro.
+  3. Setup file:  installer_output\AbixNinja_Setup.exe   (eta bondhuder pathao)
+
+[ C ] GAME E KI KI ACHE
+  - Intro: stars er upor ABIX NINJA logo + "BY ABU BAKKAR" + loading bar.
+  - Main menu: PLAY / SETTINGS / ABIX TOOLS / SPECIAL TOOLS / GAMING PC
+  - Upor bame:   CODE (C)  - secret code box        MODS (M) - mods panel
+  - Niche bame:  TUTORIAL (T)                       Niche dane: ABIX NINJA TRAILER (V) - full screen video
+  - Trailer theke ber hote: ESC / Space / Enter / click.
+
+[ D ] SECRET CODES   *** PRIVATE - bondhuder kit dibe na, dilei ei file muche dao ***
+  (Main menu -> CODE button ba C key. Boro/choto hater lekha alada. 5 bar vul = 30 second lock.)
+
+  abixisbest143babyi<3u
+        UNLIMITED MONEY - Tk, Dollar, Diamond shob shomoy full
+  AX-qNivq-WDf7H-eQC5t      unlimited money OFF
+  AX-ydU6t-y4yuj-U2uyF      GOD MODE on/off
+  AX-bRm4W-eYStx-4mpWF      shob level unlock
+  AX-7SrWG-w3Gj6-jp8MR      shob level e 3 star
+  AX-4ASgd-58pTW-kTD6K      shob Special Tools unlock
+  AX-iXgKJ-kzMWd-PjisW      +100 Diamond
+  AX-ydcRh-pAacF-rTaUe      +1,000,000 Tk
+
+[ E ] MODS + SECURITY SERVER  (details: MODS_GUIDE.txt)
+  Mod folder:  C:\Users\<tumi>\AppData\Roaming\AbixNinja\AbixMods\
+  1. Start_Security_Server.bat chalao (game khelar shomoy window khola rakho)
+  2. Mod folder ta Approve_Mod.bat er upor drag kore chharo
+  3. Game e MODS button shobuj = SECURITY ON (mod cholbe). Lal = OFFLINE (kono mod cholbe na).
+
+[ F ] SAVE FILE
+  C:\Users\<tumi>\AppData\Roaming\AbixNinja\abix_save.json

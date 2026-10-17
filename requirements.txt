@@ -1,0 +1,4 @@
+pygame>=2.5
+# optional (PC only):
+ursina            # REAL 3D jail animation  ->  pip install ursina
+imageio-ffmpeg    # recorder MP4 (ffmpeg na thakle)  ->  pip install imageio-ffmpeg
